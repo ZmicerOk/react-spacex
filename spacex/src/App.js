@@ -1,19 +1,16 @@
 import React from 'react';
 
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
+import Features  from './components/Features/Features';
 import './style.css';
 
-import Header from './components/header/Header';
 function App() {
   return (
-    <React.Fragment >
-     <Header/>
-      <section className="main">
-        <h1 className="title">Falcon 1</h1>
-
-        <div className="video-container">
-          <video className="video" autoPlay loop muted src="./video/moon.mp4"></video>
-        </div>
-      </section>
+    <React.Fragment>
+      <Header />
+      <Main />
+      <Features/>
     </React.Fragment>
   );
 }
