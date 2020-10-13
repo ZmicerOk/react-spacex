@@ -7,7 +7,6 @@ ReactDOM.render(
     <App />
   </React.StrictMode>,
   document.getElementById('root'),
-  ()=>console.log('test ReactDOM.render cb')
-  
+  // ()=>console.log('test ReactDOM.render cb')
 );
 
