@@ -3,10 +3,10 @@ import logo from './logo.svg';
 import './style.css';
 function App() {
   return (
-    <div className="App">
+    <React.Fragment >
       <header className="header">
         <img src={logo} alt="Logo Space X" className="logo" />
-       
+
         <nav className="main-nav nav">
           <ul className="list">
             <li className="item">
@@ -46,7 +46,14 @@ function App() {
           </ul>
         </nav>
       </header>
-    </div>
+      <section className="main">
+        <h1 className="title">Falcon 1</h1>
+
+        <div className="video-container">
+          <video className="video" autoPlay loop muted src="./video/moon.mp4"></video>
+        </div>
+      </section>
+    </React.Fragment>
   );
 }
 
