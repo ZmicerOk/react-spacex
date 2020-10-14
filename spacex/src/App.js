@@ -29,7 +29,7 @@ class App extends React.Component {
       })
       .then((data) => data.find((item) => item.name === this.state.rocket))
       .then((rocketFeatures) => {
-        this.setState({ rocketFeatures }, () => {});
+        this.setState({ rocketFeatures });
       });
   }
 

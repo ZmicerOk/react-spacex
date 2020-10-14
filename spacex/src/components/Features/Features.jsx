@@ -4,10 +4,51 @@ import './features.css';
 
 const Features = ({ rocketFeatures }) => {
   console.log(rocketFeatures);
+
+  //const height = rocketFeatures['height'];
+  // for (let key in rocketFeatures) {
+  //   const rocketName = rocketFeatures['name'],
+  //     height = rocketFeatures['height'],
+  //     diameter = rocketFeatures['diameter'],
+  //     mass = rocketFeatures['mass'],
+  //     payload = rocketFeatures['payload_weights'][0]['kg'],
+  //     description = rocketFeatures['description'];
+  //   console.log(rocketName, height['meters'], diameter['feet'], mass, payload, description);
+  // }
+
+  const keyValue = (paramKey, children) => {
+    for (let key in rocketFeatures) {
+      if (key === paramKey) {
+        console.log(key, rocketFeatures[key], children);
+        if (children) {
+          return rocketFeatures[key][children];
+        } else {
+          return rocketFeatures[key];
+        }
+      }
+    }
+  };
+
+  // const extractValue = ({ rocketName, height, diameter, mass, payload, description }) => {
+  //   for (let key in rocketFeatures) {
+  //     rocketName = rocketFeatures['name'];
+  //       height = rocketFeatures['height'];
+  //       diameter = rocketFeatures['diameter'];
+  //       mass = rocketFeatures['mass'];
+  //       payload = rocketFeatures['payload_weights'][0]['kg'];
+  //       description = rocketFeatures['description'];
+  //     console.log(rocketName, height['meters'], diameter['feet'], mass, payload, description);
+  //     return ({ rocketName, height, diameter, mass, payload, description });
+  //   }
+  // };
+
+  // extractValue();
+  //console.log(typeOf rocketFeatures) ;
+  //let diameter = rocketFeatures.diameter;
   return (
     <section className="features">
       <h2 className="features-title">
-        Falcon 1 <br />
+        {keyValue('name', false)} <br />
         Overview
       </h2>
       <div className="overview">
@@ -16,19 +57,26 @@ const Features = ({ rocketFeatures }) => {
           <thead>
             <tr>
               <td className="table-column">HEIGHT</td>
-              <td className="table-column">22.25 m / 73 ft</td>
+              <td className="table-column">
+                {' '}
+                {keyValue('height', 'meters')} m / {keyValue('height', 'feet')} ft
+              </td>
             </tr>
             <tr>
               <td className="table-column">DIAMETER</td>
-              <td className="table-column">1.68 m / 5.5 ft</td>
+              <td className="table-column">
+                {keyValue('diameter', 'meters')} m / {keyValue('diameter', 'feet')} ft
+              </td>
             </tr>
             <tr>
               <td className="table-column">MASS</td>
-              <td className="table-column">30,146 kg / 66,460 lb</td>
+              <td className="table-column">
+                {keyValue('mass', 'kg')} kg / {keyValue('mass', 'lb')} lb
+              </td>
             </tr>
             <tr>
               <td className="table-column">PAYLOAD TO LEO</td>
-              <td className="table-column">450 kg / 992 lb</td>
+              {/* <td className="table-column">{(keyValue('payload_weights', 'kg'))['kg']} kg / 992 lb</td> */}
             </tr>
           </thead>
         </table>
@@ -37,11 +85,7 @@ const Features = ({ rocketFeatures }) => {
         </RellaxWrapper>
         <article>
           <h3 className="features-subtitle">DESCRIPTION</h3>
-          <p className="features-text">
-            The Falcon 1 was an expendable launch system privately developed and manufactured by
-            SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first
-            privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.
-          </p>
+          <p className="features-text">{keyValue('description')}</p>
         </article>
       </div>
     </section>
