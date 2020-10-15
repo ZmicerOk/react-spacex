@@ -3,11 +3,23 @@ import RellaxWrapper from 'react-rellax-wrapper';
 import './features.css';
 
 const Features = ({ rocketFeatures }) => {
-  //console.log(rocketFeatures);
+  console.log(rocketFeatures);
+
+  //const height = rocketFeatures['height'];
+  // for (let key in rocketFeatures) {
+  //   const rocketName = rocketFeatures['name'],
+  //     height = rocketFeatures['height'],
+  //     diameter = rocketFeatures['diameter'],
+  //     mass = rocketFeatures['mass'],
+  //     payload = rocketFeatures['payload_weights'][0]['kg'],
+  //     description = rocketFeatures['description'];
+  //   console.log(rocketName, height['meters'], diameter['feet'], mass, payload, description);
+  // }
 
   const keyValue = (paramKey, children) => {
     for (let key in rocketFeatures) {
       if (key === paramKey) {
+        console.log(key, rocketFeatures[key], children);
         if (children) {
           return rocketFeatures[key][children];
         } else {
@@ -17,20 +29,22 @@ const Features = ({ rocketFeatures }) => {
     }
   };
 
-  const getPaylaoad = (measure) =>{
-    for (const key in rocketFeatures) {
-      if (key === 'payload_weights') {
-        const data = rocketFeatures[key];
-        const leoData = data.filter(el => el.id === 'leo');
-        for( const param in leoData[0]){
-          if (param === measure){
-                return leoData[0][measure];
-          }
-        }
-      }
-    }
-  }
+  // const extractValue = ({ rocketName, height, diameter, mass, payload, description }) => {
+  //   for (let key in rocketFeatures) {
+  //     rocketName = rocketFeatures['name'];
+  //       height = rocketFeatures['height'];
+  //       diameter = rocketFeatures['diameter'];
+  //       mass = rocketFeatures['mass'];
+  //       payload = rocketFeatures['payload_weights'][0]['kg'];
+  //       description = rocketFeatures['description'];
+  //     console.log(rocketName, height['meters'], diameter['feet'], mass, payload, description);
+  //     return ({ rocketName, height, diameter, mass, payload, description });
+  //   }
+  // };
 
+  // extractValue();
+  //console.log(typeOf rocketFeatures) ;
+  //let diameter = rocketFeatures.diameter;
   return (
     <section className="features">
       <h2 className="features-title">
@@ -62,7 +76,7 @@ const Features = ({ rocketFeatures }) => {
             </tr>
             <tr>
               <td className="table-column">PAYLOAD TO LEO</td>
-              <td className="table-column">{getPaylaoad('kg')} kg / {getPaylaoad('lb')} lb</td>
+              {/* <td className="table-column">{(keyValue('payload_weights', 'kg'))['kg']} kg / 992 lb</td> */}
             </tr>
           </thead>
         </table>
