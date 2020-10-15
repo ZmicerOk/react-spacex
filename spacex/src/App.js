@@ -62,8 +62,9 @@ class App extends React.Component {
       <>
         <Header rockets={this.state.rockets} changeRocket={this.changeRocket} />
         <Main rocket={this.state.rocket} />
-        <Features rocketFeatures={this.state.rocketFeatures} />
-        <Footer companyLinks={this.state.companyLinks} summary = {this.state.summary}/>
+        {/* <Features rocketFeatures={this.state.rocketFeatures} /> */}
+        {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />}
+        <Footer companyLinks={this.state.companyLinks} summary={this.state.summary} />
       </>
     );
   }
