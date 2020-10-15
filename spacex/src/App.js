@@ -14,28 +14,12 @@ class App extends React.Component {
     rocket: 'Falcon 1',
     rocketFeatures: null,
     rockets: [],
-    companyLinks: {},
-    summary: '',
+    company: null,
   };
-
-  companyInfo() {
-    this.fetchdata.getCompany().then((data) => {
-      for (const key in data) {
-        if (key === 'links') {
-          // console.log(key, data[key]);
-          this.setState({ companyLinks: data[key] });
-        }
-        if (key === 'summary') {
-          // console.log(key, data[key]);
-          this.setState({ summary: data[key] });
-        }
-      }
-    });
-  }
 
   componentDidMount() {
     this.updateRocket();
-    this.companyInfo();
+    this.updateCompany();
   }
 
   updateRocket() {
@@ -56,15 +40,18 @@ class App extends React.Component {
     this.setState({ rocket }, this.updateRocket());
   };
 
+  updateCompany = () => {
+    this.fetchdata.getCompany().then((company) => this.setState({ company }));
+  };
+
   render() {
     // console.log(this.state);
     return (
       <>
         <Header rockets={this.state.rockets} changeRocket={this.changeRocket} />
         <Main rocket={this.state.rocket} />
-        {/* <Features rocketFeatures={this.state.rocketFeatures} /> */}
         {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />}
-        <Footer companyLinks={this.state.companyLinks} summary={this.state.summary} />
+        {this.state.company && <Footer {...this.state.company} />}
       </>
     );
   }

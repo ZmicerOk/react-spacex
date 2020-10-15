@@ -2,10 +2,9 @@ import React from 'react';
 import './footer.css';
 import logo from '../../logo.svg';
 
-const Footer = ({
-  links: { website, flickr, twitter, elon_twitter: elonMaskTwitter },
-  summary,
-}) => {
+const Footer = ({ companyLinks, summary }) => {
+  const { website, flickr, twitter, elon_twitter } = companyLinks;
+
   return (
     <footer className="footer">
       <p className="footer-info">{summary}</p>
@@ -13,11 +12,7 @@ const Footer = ({
       <nav className="footer-nav">
         <ul className="list">
           <li className="item">
-            <a
-              href={elonMaskTwitter}
-              rel="noopener noreferrer"
-              target="_blank"
-              className="item-link">
+            <a href={elon_twitter} rel="noopener noreferrer" target="_blank" className="item-link">
               Elon Musk Twitter
             </a>
           </li>
