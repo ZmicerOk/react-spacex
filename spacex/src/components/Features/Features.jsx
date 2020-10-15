@@ -1,10 +1,14 @@
 import React from 'react';
 import RellaxWrapper from 'react-rellax-wrapper';
 import './features.css';
+const image = {
+  'Falcon 1': 'falcon-1',
+  'Falcon 9': 'falcon-9',
+  'Falcon Heavy': 'falcon-heavy',
+  Starship: 'starship',
+};
 
 const Features = ({ rocketFeatures }) => {
-  //console.log(rocketFeatures);
-
   const keyValue = (paramKey, children) => {
     for (let key in rocketFeatures) {
       if (key === paramKey) {
@@ -17,24 +21,24 @@ const Features = ({ rocketFeatures }) => {
     }
   };
 
-  const getPaylaoad = (measure) =>{
+  const getPaylaoad = (measure) => {
     for (const key in rocketFeatures) {
       if (key === 'payload_weights') {
         const data = rocketFeatures[key];
-        const leoData = data.filter(el => el.id === 'leo');
-        for( const param in leoData[0]){
-          if (param === measure){
-                return leoData[0][measure];
+        const leoData = data.filter((el) => el.id === 'leo');
+        for (const param in leoData[0]) {
+          if (param === measure) {
+            return leoData[0][measure];
           }
         }
       }
     }
-  }
+  };
 
   return (
     <section className="features">
       <h2 className="features-title">
-        {keyValue('name', false)} <br />
+        {keyValue('name')} <br />
         Overview
       </h2>
       <div className="overview">
@@ -62,12 +66,14 @@ const Features = ({ rocketFeatures }) => {
             </tr>
             <tr>
               <td className="table-column">PAYLOAD TO LEO</td>
-              <td className="table-column">{getPaylaoad('kg')} kg / {getPaylaoad('lb')} lb</td>
+              <td className="table-column">
+                {getPaylaoad('kg')} kg / {getPaylaoad('lb')} lb
+              </td>
             </tr>
           </thead>
         </table>
         <RellaxWrapper speed={14}>
-          <img src="img/falcon-1.png" alt="rocket" className="rocket" />
+          <img src={`img/${image[keyValue('name')]}.png`} alt="rocket" className="rocket" />
         </RellaxWrapper>
         <article>
           <h3 className="features-subtitle">DESCRIPTION</h3>
