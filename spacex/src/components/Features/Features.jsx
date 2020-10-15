@@ -5,7 +5,7 @@ const image = {
   'Falcon 1': 'falcon-1',
   'Falcon 9': 'falcon-9',
   'Falcon Heavy': 'falcon-heavy',
-  Starship: 'starship',
+  'Starship': 'starship',
 };
 
 const Features = ({ rocketFeatures }) => {
@@ -48,7 +48,6 @@ const Features = ({ rocketFeatures }) => {
             <tr>
               <td className="table-column">HEIGHT</td>
               <td className="table-column">
-                {' '}
                 {keyValue('height', 'meters')} m / {keyValue('height', 'feet')} ft
               </td>
             </tr>
@@ -73,7 +72,7 @@ const Features = ({ rocketFeatures }) => {
           </thead>
         </table>
         <RellaxWrapper speed={14}>
-          <img src={`img/${image[keyValue('name')]}.png`} alt="rocket" className="rocket" />
+          <img src={`img/${image[keyValue('name')]}.png`} alt={keyValue('name')} className="rocket" />
         </RellaxWrapper>
         <article>
           <h3 className="features-subtitle">DESCRIPTION</h3>
