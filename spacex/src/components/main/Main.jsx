@@ -11,14 +11,14 @@ const Main = ({ rocket }) => (
   <section className="main">
     <h1 className="title">{rocket ? rocket : 'Календарь SpaceX'}</h1>
     <div className="video-container">
-      
-      {rocket && <video
-        className="video"
-        autoPlay
-        loop
-        muted
-        src={`./video/${video.hasOwnProperty(rocket) ? video[rocket] : video.other}.mp4`}>
-        </video>}
+      {rocket && (
+        <video
+          className="video"
+          autoPlay
+          loop
+          muted
+          src={`./video/${video.hasOwnProperty(rocket) ? video[rocket] : video.other}.mp4`}></video>
+      )}
     </div>
   </section>
 );

@@ -11,7 +11,7 @@ import Details from './components/Details/Details';
 import FetchData from './service/FetchData';
 import './style.css';
 class App extends React.Component {
-  fetchdata = new FetchData();
+  fetchData = new FetchData();
   state = {
     rocket: 'Falcon 1',
     rocketFeatures: null,
@@ -26,7 +26,7 @@ class App extends React.Component {
 
   updateRocket() {
     // console.log(this.state);
-    this.fetchdata
+    this.fetchData
       .getRocket()
       .then((data) => {
         this.setState({ rockets: data.map((el) => el.name) });
@@ -43,7 +43,7 @@ class App extends React.Component {
   };
 
   updateCompany = () => {
-    this.fetchdata.getCompany().then((company) => this.setState({ company }));
+    this.fetchData.getCompany().then((company) => this.setState({ company }));
   };
 
   render() {
@@ -55,16 +55,14 @@ class App extends React.Component {
           {this.state.company && <Home company={this.state.company} />}
         </Route>
         <Route path="/rocket">
-        <Main rocket={this.state.rocket} />
-        {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />}
+          <Main rocket={this.state.rocket} />
+          {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />}
         </Route>
         <Route path="/calendar">
-          <Main/>
-          <Calendar/>
+          <Calendar />
         </Route>
         <Route path="/details">
-          <Main/>
-          <Details/>
+          <Details />
         </Route>
         {this.state.company && <Footer {...this.state.company} />}
       </BrowserRouter>
