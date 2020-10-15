@@ -2,8 +2,8 @@ import React from 'react';
 import './footer.css';
 import logo from '../../logo.svg';
 
-const Footer = ({ company, summary }) => {
-  const { website, flickr, twitter, elon_twitter } = company;
+const Footer = ({ companyLinks, summary }) => {
+  const { website, flickr, twitter, elon_twitter } = companyLinks;
 
   return (
     <footer className="footer">
