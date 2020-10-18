@@ -3,7 +3,7 @@ import Main from '../Main/Main';
 import { useHistory } from 'react-router-dom';
 import { useLaunches } from '../useLaunches/useLaunches';
 import './details.css';
-
+import YouTube from 'react-youtube';
 const Details = (props) => {
   const history = useHistory();
   const [launch, setLaunch] = useState(null);
@@ -11,7 +11,7 @@ const Details = (props) => {
   useEffect(() => {
     setLaunch(getLaunch(props.match.params.id));
   },[getLaunch, props.match.params.id]);
-  console.dir(launch);
+  // console.dir(launch);
   // add preloader!!
   //if (!launch) return <div>loading...</div>;
   if (!launch) return null;
@@ -29,15 +29,10 @@ const Details = (props) => {
             </div>
           </div>
           <div>
-            <iframe
-              className="details-youtube"
-              title="details-youtube"
-              width="560"
-              height="315"
-              src={launch.links.webcast}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen></iframe>
+            <YouTube
+            className="details-youtube"
+            videoId={launch.links.youtube_id}
+            />
           </div>
         </div>
         <button onClick={history.goBack} className="button button-back" type="button">
