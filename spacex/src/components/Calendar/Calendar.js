@@ -9,7 +9,7 @@ const Calendar = () => {
   const { data } = useLaunches();
   return (
     <>
-      <Main />
+      <Main title="Календарь SpaceX" />
       <section className="calendar">
         <div className="container">
           <ul className="calendar-list">

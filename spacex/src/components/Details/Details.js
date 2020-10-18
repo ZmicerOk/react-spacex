@@ -1,31 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Main from '../Main/Main';
 import { useHistory } from 'react-router-dom';
 import { useLaunches } from '../useLaunches/useLaunches';
 import './details.css';
-const Details = ({match}) => {
+
+const Details = (props) => {
   const history = useHistory();
-  const { id } = match.params;
-  const { data } = useLaunches();
-  const item = data.find((el) => el.id === id);
-// console.dir(item);
-// console.log(item.details);
-if(item){
-  console.log(item);
-  console.log(item.details)
+  const [launch, setLaunch] = useState(null);
+  const { getLaunch } = useLaunches();
+  useEffect(() => {
+    setLaunch(getLaunch(props.match.params.id));
+  },[getLaunch, props.match.params.id]);
+  console.dir(launch);
+  // add preloader!!
+  //if (!launch) return <div>loading...</div>;
+  if (!launch) return null;
   return (
     <>
-      <Main />
+      <Main title={launch.name}/>
       <main className="details">
         <div className="container">
           <div className="details-row">
             <div className="details-image">
-              <img src="https://images2.imgbox.com/3c/0e/T8iJcSN3_o.png" alt="" />
+              <img src={launch.links.patch.small} alt={launch.name}/>
             </div>
             <div className="details-content">
-              <p className="details-description">
-                {/* {item.details} */}
-              </p>
+              <p className="details-description">{launch.details}</p>
             </div>
           </div>
           <div>
@@ -34,7 +34,7 @@ if(item){
               title="details-youtube"
               width="560"
               height="315"
-              src="https://www.youtube.com/embed/dLQ2tZEH6G0"
+              src={launch.links.webcast}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen></iframe>
@@ -46,9 +46,6 @@ if(item){
       </main>
     </>
   );
-
-}
-
 };
 
 export default Details;
