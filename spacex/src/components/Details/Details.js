@@ -1,8 +1,18 @@
 import React from 'react';
 import Main from '../Main/Main';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { useLaunches } from '../useLaunches/useLaunches';
 import './details.css';
-const Details = () => {
+const Details = ({match}) => {
+  const history = useHistory();
+  const { id } = match.params;
+  const { data } = useLaunches();
+  const item = data.find((el) => el.id === id);
+// console.dir(item);
+// console.log(item.details);
+if(item){
+  console.log(item);
+  console.log(item.details)
   return (
     <>
       <Main />
@@ -14,7 +24,7 @@ const Details = () => {
             </div>
             <div className="details-content">
               <p className="details-description">
-                Engine failure at 33 seconds and loss of vehicle
+                {/* {item.details} */}
               </p>
             </div>
           </div>
@@ -30,12 +40,15 @@ const Details = () => {
               allowFullScreen></iframe>
           </div>
         </div>
-        <Link to="/calendar" className="button button-back">
+        <button onClick={history.goBack} className="button button-back" type="button">
           go back
-        </Link>
+        </button>
       </main>
     </>
   );
+
+}
+
 };
 
 export default Details;

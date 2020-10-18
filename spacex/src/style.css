@@ -71,6 +71,16 @@ p {
   line-height: 14px;
 }
 
+.button {
+  background-color: inherit;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #232223;
+  /* color: #111111; */
+}
 /* header */
 
 /* main */
