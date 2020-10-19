@@ -64,7 +64,7 @@ class App extends React.Component {
 
         <Route path="/calendar" component={Calendar} />
 
-        <Route path="/details/:id" component={Details} />
+        <Route path="/details/:name" component={Details} />
         {this.state.company && <Footer {...this.state.company} />}
       </BrowserRouter>
     );

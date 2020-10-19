@@ -9,30 +9,27 @@ const Details = (props) => {
   const [launch, setLaunch] = useState(null);
   const { getLaunch } = useLaunches();
   useEffect(() => {
-    setLaunch(getLaunch(props.match.params.id));
-  },[getLaunch, props.match.params.id]);
-  // console.dir(launch);
+    setLaunch(getLaunch(props.match.params.name));
+  }, [getLaunch, props.match.params.name]);
+
   // add preloader!!
   //if (!launch) return <div>loading...</div>;
   if (!launch) return null;
   return (
     <>
-      <Main title={launch.name}/>
+      <Main title={launch.name} />
       <main className="details">
         <div className="container">
           <div className="details-row">
             <div className="details-image">
-              <img src={launch.links.patch.small} alt={launch.name}/>
+              <img src={launch.links.patch.small} alt={launch.name} />
             </div>
             <div className="details-content">
               <p className="details-description">{launch.details}</p>
             </div>
           </div>
           <div>
-            <YouTube
-            className="details-youtube"
-            videoId={launch.links.youtube_id}
-            />
+            <YouTube className="details-youtube" videoId={launch.links.youtube_id} />
           </div>
         </div>
         <button onClick={history.goBack} className="button button-back" type="button">

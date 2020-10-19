@@ -9,7 +9,7 @@ export const useLaunches = () => {
     fetchData.getLaunches().then((launches) => setData((state) => [...launches]));
   }, []);
 
-  const getLaunch = (id) => data.find((el) => el.id === id);
+  const getLaunch = (name) => data.find((el) => el.name === name.replace(/_ */g, ' '));
   
   return { data , getLaunch};
 };

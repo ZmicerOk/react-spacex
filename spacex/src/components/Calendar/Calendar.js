@@ -22,7 +22,9 @@ const Calendar = () => {
                     </div>
                     <div className="launches-content">
                       <h2 className="launches-title">{el.name}</h2>
-                      <Link to={`/details/${el.id}`} className="button launches-details">
+                      <Link
+                        to={`/details/${el.name.replace(/\s */g, '_')}`}
+                        className="button launches-details">
                         Подробнее
                       </Link>
                     </div>
