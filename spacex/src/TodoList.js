@@ -8,7 +8,7 @@ function declOfNum(number, titles) {
 }
 
 const TodoList = ({ items }) => {
-  console.log(items.length);
+  console.log(items);
   return (
     <>
       <ol>
